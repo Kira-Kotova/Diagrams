@@ -25,6 +25,31 @@ namespace Diagrams
                 var x = 0.0;
                 var dx = delta;
                 var array = Provider.Series[i];
+                
+                var transform = new TransformGroup();
+                transform.Children.Add(new ScaleTransform(-1, 1));
+                transform.Children.Add(new RotateTransform(180));
+                
+                for (var k = 0; k < array.Length; k++)
+                {
+                    var axesX = new TextBlock
+                    {
+                        Text = k.ToString(),
+                        LayoutTransform = transform, 
+                        Margin = new Thickness(delta * k,0,0,0)
+                    };
+                    
+                    var axesY = new TextBlock
+                    {
+                        Text = array[k].ToString(),
+                        LayoutTransform  = transform,
+                        Margin = new Thickness(0,array[k] * 20,0,0) //*1
+                    };
+                    
+                    canvas.Children.Add(axesX);
+                    canvas.Children.Add(axesY);
+                }
+                
                 for (var j = 0; j < array.Length - 1; j++)
                 {
                     var y = array[j] * 20;
