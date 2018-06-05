@@ -32,22 +32,22 @@ namespace Diagrams
                 
                 for (var k = 0; k < array.Length; k++)
                 {
-                    var axesX = new TextBlock
+                    var axisX = new TextBlock
                     {
                         Text = k.ToString(),
                         LayoutTransform = transform, 
                         Margin = new Thickness(delta * k,0,0,0)
                     };
                     
-                    var axesY = new TextBlock
+                    var axisY = new TextBlock
                     {
                         Text = array[k].ToString(),
                         LayoutTransform  = transform,
                         Margin = new Thickness(0,array[k] * 20,0,0) //*1
                     };
                     
-                    canvas.Children.Add(axesX);
-                    canvas.Children.Add(axesY);
+                    canvas.Children.Add(axisX);
+                    canvas.Children.Add(axisY);
                 }
                 
                 for (var j = 0; j < array.Length - 1; j++)
