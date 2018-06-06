@@ -21,7 +21,6 @@ namespace Diagrams
             var center = new Point(canvas.ActualWidth / 2, canvas.ActualHeight / 2);
             var radius = Min(canvas.ActualWidth, canvas.ActualHeight) / 2;
             var startAngle = 0.0;
-            var geometry = new PathGeometry();
             var sum = Provider.Data.Sum();
             for (var i = 0; i < Provider.Data.Length; i++)
             {
@@ -30,7 +29,6 @@ namespace Diagrams
                 var targetPoint = PointByValue(center, radius, startAngle - angle);
                 
                 var figure = new PathFigure {IsClosed = true, StartPoint = center, IsFilled = true};
-                
                 figure.Segments.Add(new LineSegment(startPoint, true));
                 figure.Segments.Add(new ArcSegment
                     (targetPoint, new Size(radius, radius), angle, angle > PI, SweepDirection.Counterclockwise, true ));
@@ -40,15 +38,14 @@ namespace Diagrams
                 //isLargeArc - должна ли быть дуга больше 180
                 //sweepDirection - направление отрисовки(по часовой\против)
                 //isStroked - Задайте значение true, чтобы вычертить дугу, если тип Pen используется для отрисовки сегмента; в противном случае — значение false.
-                geometry.Figures.Add(figure);
+                var geometry = new PathGeometry();
+                geometry.Figures.Add(figure);                
 
                 var path = new Path
                 {
-                    Stroke = Brushes.Black,
                     Fill = new SolidColorBrush(Provider.ColorOfDiagram[i]),
                     Data = geometry
                 };
-
                 
                 canvas.Children.Add(path);
                 startAngle -= angle;
