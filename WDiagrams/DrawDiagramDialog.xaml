@@ -38,7 +38,13 @@
             <Button x:Name="AddButton" Content="Add"
                     Margin="5"
                     Padding="10"
-                    Click="AddButtonOnClick" />
+                    Click="AddButtonOnClick">
+                           <ToolTipService.ToolTip>
+                                        <ToolTip>
+                                                <Image Source="Properties/Images/PieChart.JPG"/>
+                                        </ToolTip>
+                           </ToolTipService.ToolTip>
+              </Button>
             <Button x:Name="SeriesButton" Content="Series"
                     Margin="5"
                     Padding="10"
