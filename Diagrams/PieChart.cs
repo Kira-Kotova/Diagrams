@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -9,8 +9,15 @@ namespace Diagrams
 {
     public class PieChart : AbstractDiagram
     {
+        /// <summary>
+        /// Хранилище данных для данной диаграммы.
+        /// </summary>
         private DataProvider Provider;
         
+        /// <summary>
+        /// Конструктор Круговой диаграммы.
+        /// </summary>
+        /// <param name="data">Данные для прорисовки.</param>
         public PieChart(DataProvider data) : base(data)
         {
             Provider = new DataProvider(data.Series[0]);
@@ -44,10 +51,36 @@ namespace Diagrams
                 var path = new Path
                 {
                     Fill = new SolidColorBrush(Provider.ColorOfDiagram[i]),
+                    Stroke = new SolidColorBrush(Colors.White),
                     Data = geometry
                 };
                 
+                // Warning! Холст перевёрнут! Трансформация необходима для грамотного отображения содержимого.
+                var transform = new TransformGroup();
+                transform.Children.Add(new ScaleTransform(-1, 1));
+                transform.Children.Add(new RotateTransform(180));
+                
+                // Legend
+                var series = new TextBlock
+                {
+                    Text = Provider.Data[i].ToString(),
+                    LayoutTransform = transform,
+                    Margin = new Thickness(60,100 + i * 20,0,0)
+                };
+                
+                //Legend
+                var pic = new TextBlock()
+                {
+                    Background = new SolidColorBrush(Provider.ColorOfDiagram[i]),   
+                    Height = 12,
+                    Width = 12,
+                    Margin = new Thickness(40,100 + i * 20,0,0) 
+                };
+                
+                canvas.Children.Add(series);
+                canvas.Children.Add(pic);
                 canvas.Children.Add(path);
+                
                 startAngle -= angle;
             }
             canvas.InvalidateVisual();
@@ -59,6 +92,5 @@ namespace Diagrams
             var y = center.Y + radius * Sin(angle);
             return new Point(x, y);
         }
-
     }
 }
