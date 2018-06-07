@@ -1,4 +1,6 @@
-﻿using System.Windows;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using Diagrams;
 
 namespace WDiagrams
@@ -41,5 +43,12 @@ namespace WDiagrams
             currentType = DiagramType.Plot;
             new DrawDiagramDialog(currentType).ShowDialog();
         }
+
+        private void ScatterButtonOnClic(object sender, RoutedEventArgs e)
+        {
+            currentType = DiagramType.Scatter;
+            new DrawDiagramDialog(currentType).ShowDialog();
+        }
+
     }
 }
