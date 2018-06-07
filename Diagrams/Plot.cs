@@ -45,14 +45,14 @@ namespace Diagrams
                     {
                         Text = k.ToString(),
                         LayoutTransform = transform, 
-                        Margin = new Thickness(delta * k,15,0,0)
+                        Margin = new Thickness(delta * k,0,0,0)
                     };
                     
                     var axisY = new TextBlock
                     {
                         Text = array[k].ToString(),
                         LayoutTransform  = transform,
-                        Margin = new Thickness(0,array[k] * h + 15,0,0)
+                        Margin = new Thickness(0,array[k] * h + 10,0,0)
                     };
 
                     var marker = new Line
@@ -92,8 +92,8 @@ namespace Diagrams
                 //Lines
                 for (var j = 0; j < array.Length - 1; j++)
                 {
-                    var y = array[j] * h;
-                    var dy = array[j + 1] * h;
+                    var y = array[j] * h + 10;
+                    var dy = array[j + 1] * h + 10;
                     
                     var figure = new Polyline
                     {
