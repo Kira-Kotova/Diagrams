@@ -7,8 +7,15 @@ namespace Diagrams
 {
     public class Scatter : AbstractDiagram
     {
+        /// <summary>
+        /// Хранилище данных для данной диаграммы.
+        /// </summary>
         private DataProvider Provider;
 
+        /// <summary>
+        /// Конструктор Точечной диаграммы.
+        /// </summary>
+        /// <param name="data">Данные для прорисовки.</param>
         public Scatter(DataProvider data) : base(data)
         {
             Provider = new DataProvider(data.Series[0]);
@@ -79,7 +86,6 @@ namespace Diagrams
                 canvas.Children.Add(markerV);
                 canvas.Children.Add(figure);
             }
-
         }
     }
 }
