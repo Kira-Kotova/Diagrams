@@ -40,7 +40,7 @@ namespace Diagrams
                 {
                     Width = 5,
                     Height = 5,
-                    Fill = new SolidColorBrush(Provider.ColorOfDiagram[1]),
+                    Fill = new SolidColorBrush(Provider.ColorOfDiagram[4]),
                     Margin = new Thickness(x,y,0,0)
                 };
                 
