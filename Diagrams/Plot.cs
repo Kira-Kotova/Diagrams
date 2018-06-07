@@ -61,8 +61,8 @@ namespace Diagrams
                         StrokeDashArray = new DoubleCollection(new double[]{1,2}),
                         X1 = 0,
                         X2 = canvas.ActualWidth - 50,
-                        Y1 = array[k] * h,
-                        Y2 = array[k] * h 
+                        Y1 = array[k] * h + 10,
+                        Y2 = array[k] * h + 10
                     };
                     
                     //Legend
