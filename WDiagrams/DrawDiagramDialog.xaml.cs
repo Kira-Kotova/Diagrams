@@ -11,10 +11,25 @@ namespace WDiagrams
 {
     public partial class DrawDiagramDialog : Window
     {
+        /// <summary>
+        /// Тип выбранной диаграммы.
+        /// </summary>
         private DiagramType Type;
+        
+        /// <summary>
+        /// Серия.
+        /// </summary>
         private double[] data;
+        
+        /// <summary>
+        /// Хранилище данных для построения диаграммы.
+        /// </summary>
         private DataProvider DataInfo = new DataProvider(new List<double[]>());
         
+        /// <summary>
+        /// Конструктор диалогового окна.
+        /// </summary>
+        /// <param name="type">Тип выбранной диаграммы.</param>
         public DrawDiagramDialog(DiagramType type)
         {
             Type = type;
@@ -22,6 +37,7 @@ namespace WDiagrams
             Repeat.IsEnabled = false;
         }
 
+        //Получение выбранной диаграммы.
         private AbstractDiagram GetDiagram(DiagramType type)
         {
             AbstractDiagram diagram;
@@ -51,6 +67,7 @@ namespace WDiagrams
         private double[] GetData() => ListBoxWithData.Items.OfType<double>().ToArray();
         //создание нового листа<double>(Листбокс.Генерит коллекцию содержимого. Фильтрует по типу <string>. Проецирует каждый элемент в double.Создаёт массив элементов)
         
+        //Прорисовка выбранной диаграммы.
         private void DrawButtonOnClick(object sender, RoutedEventArgs e)
         {
             data = GetData();
@@ -72,6 +89,7 @@ namespace WDiagrams
             
         }
 
+        //Добавление в серию.
         private void AddButtonOnClick(object sender, RoutedEventArgs e)
         {
             double result;  
@@ -87,6 +105,7 @@ namespace WDiagrams
             }
         }
 
+        //Следующая серия.
         private void SeriesButtonOnClick(object sender, RoutedEventArgs e)
         {
             data = GetData();
@@ -96,19 +115,21 @@ namespace WDiagrams
             AddButton.IsEnabled = true;
         }
 
+        //Удалить из серии.
         private void DeleteButtonOnClick(object sender, RoutedEventArgs e)
         {
             ListBoxWithData.Items.RemoveAt(ListBoxWithData.SelectedIndex);
             DeleteButton.IsEnabled = false;
             AddButton.IsEnabled = true;
         }
-
+        
         private void ListBoxWithData_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ListBoxWithData.SelectedIndex >= 0)
                 DeleteButton.IsEnabled = true;
         }
         
+        //Обработка нажатий клавиш клавиатуры.
         private void WindowKeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && AddButton.IsEnabled)
@@ -119,6 +140,7 @@ namespace WDiagrams
                 Close();
         }
 
+        //Повторить построение.
         private void RepeatButtonOnClick(object sender, RoutedEventArgs e)
         {
             MainCanvas.Children.Clear();
@@ -136,6 +158,7 @@ namespace WDiagrams
             MinWidth = 900;
         }
 
+        //Реакция окна на изменение названия диаграммы.
         private void TitleTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             TitleTextBox.Foreground = new SolidColorBrush(Colors.Black);
