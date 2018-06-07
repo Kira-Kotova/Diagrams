@@ -1,30 +1,30 @@
-﻿<Window x:Class="WDiagrams.DrawDiagramDialog"
+<Window x:Class="WDiagrams.DrawDiagramDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:WDiagrams"
-             mc:Ignorable="d"
+        mc:Ignorable="d"
              d:DesignHeight="900" d:DesignWidth="600" KeyUp="WindowKeyUp"  SizeChanged="DrawDiagramDialog_OnSizeChanged">
     <Grid Background="LightGray" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <TextBox x:Name="TitleTextBox"
-                 Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"
+                 Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
                  FontSize="20"
                  Margin="5"
                  Padding="20"
                  VerticalAlignment="Center"
                  Text="Lorem Ipsum"
-                 TextAlignment="Center" />
+                 TextAlignment="Center"
+                 Foreground="DarkGray"
+                 TextChanged="TitleTextBox_OnTextChanged"/>
         <StackPanel Grid.Column="0" Grid.Row="1" >
             <TextBox x:Name="TextBoxWithData"
                      Margin="5"
@@ -38,13 +38,7 @@
             <Button x:Name="AddButton" Content="Add"
                     Margin="5"
                     Padding="10"
-                    Click="AddButtonOnClick">
-                           <ToolTipService.ToolTip>
-                                        <ToolTip>
-                                                <Image Source="Properties/Images/PieChart.JPG"/>
-                                        </ToolTip>
-                           </ToolTipService.ToolTip>
-              </Button>
+                    Click="AddButtonOnClick" />
             <Button x:Name="SeriesButton" Content="Series"
                     Margin="5"
                     Padding="10"
