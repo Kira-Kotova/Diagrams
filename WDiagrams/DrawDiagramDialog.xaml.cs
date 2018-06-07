@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using Diagrams;
 
 namespace WDiagrams
@@ -37,6 +38,9 @@ namespace WDiagrams
                      break;
                  case DiagramType.Plot:
                      diagram = new Plot(DataInfo);
+                     break;
+                 case DiagramType.Scatter:
+                     diagram = new Scatter(DataInfo);
                      break;
                  default:
                      throw new ArgumentOutOfRangeException(nameof(type));     
@@ -130,6 +134,11 @@ namespace WDiagrams
             MinHeight = 500;
             MaxWidth = 900; 
             MinWidth = 900;
+        }
+
+        private void TitleTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            TitleTextBox.Foreground = new SolidColorBrush(Colors.Black);
         }
     }
 }
