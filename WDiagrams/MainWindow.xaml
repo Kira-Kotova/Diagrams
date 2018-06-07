@@ -1,42 +1,76 @@
-﻿<Window x:Class="WDiagrams.MainWindow"
+<Window x:Class="WDiagrams.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid Background="LightGray">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row = "0" Orientation = "Horizontal" HorizontalAlignment="Center">
-            <Button Content = "PieChart"
-                    Padding = "10 3 10 3"
-                    Margin = "10"
-                    VerticalAlignment="Center"
-                    Click="PieChartButtonClick"/>
-            <Button Content="Normalized Histogram"
-                    Padding="10 3 10 3"
-                    Margin="10"
-                    VerticalAlignment="Center"
-                    Click="NormalizedHistogramButtonClick"/>
-            <Button Content="StackedHistogram"
-                    Padding="10 3 10 3"
-                    Margin="10"
-                    VerticalAlignment="Center"
-                    Click="StackedHistogramButtonClick"/>
-            <Button Content="Plot"
-                    Padding="10 3 10 3"
-                    Margin="10"
-                    VerticalAlignment="Center"
-                    Click="PlotButtonOnClic"
-                    IsEnabled="False"/>
-        </StackPanel>
-        <Button Grid.Row="1" HorizontalAlignment="Center"
-                Content = "Exit"
-                Padding = "10 3 10 3"
-                VerticalAlignment="Center"
-                Click="ExitButtonOnClick"/>
-    </Grid>
+        <Grid Background="LightGray">
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
+                        <Button Content="PieChart"
+                                Padding="10 3 10 3"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Click="PieChartButtonClick">
+                                <ToolTipService.ToolTip>
+                                        <ToolTip>
+                                                <Image Source="Resources/PieChart.JPG" />
+                                        </ToolTip>
+                                </ToolTipService.ToolTip>
+                        </Button>
+                        <Button Content="Normalized Histogram"
+                                Padding="10 3 10 3"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Click="NormalizedHistogramButtonClick">
+                                <ToolTipService.ToolTip>
+                                        <ToolTip>
+                                                <Image Source="Resources/NormalizedHistogram.JPG" />
+                                        </ToolTip>
+                                </ToolTipService.ToolTip>
+                        </Button>
+                        <Button Content="StackedHistogram"
+                                Padding="10 3 10 3"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Click="StackedHistogramButtonClick">
+                                <ToolTipService.ToolTip>
+                                        <ToolTip>
+                                                <Image Source="Resources/StackedHistogram.JPG" />
+                                        </ToolTip>
+                                </ToolTipService.ToolTip>
+                        </Button>
+                        <Button Content="Plot"
+                                Padding="10 3 10 3"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Click="PlotButtonOnClic">
+                                <ToolTipService.ToolTip>
+                                        <ToolTip>
+                                                <Image Source="Resources/Plot.JPG" />
+                                        </ToolTip>
+                                </ToolTipService.ToolTip>
+                        </Button>
+                        <Button Content="Scatter"
+                                Padding="10 3 10 3"
+                                Margin="10"
+                                VerticalAlignment="Center"
+                                Click="ScatterButtonOnClic">
+                                <ToolTipService.ToolTip>
+                                        <ToolTip>
+                                                <Image Source="Resources/Scatter.jpg" />
+                                        </ToolTip>
+                                </ToolTipService.ToolTip>
+                        </Button>
+                </StackPanel>
+                <Button Grid.Column="1" HorizontalAlignment="Center"
+                        Content="Exit"
+                        Padding="10 3 10 3"
+                        VerticalAlignment="Center"
+                        Click="ExitButtonOnClick" />
+        </Grid>
 </Window>
