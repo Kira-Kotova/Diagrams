@@ -75,18 +75,18 @@ namespace Diagrams
                     //Legend
                     var series = new TextBlock
                     {
-                        Text = (i+1).ToString(),
+                        Text = (j+1).ToString(),
                         LayoutTransform = transform,
-                        Margin = new Thickness(canvas.ActualWidth - 30,100 + i * 20,0,0)
+                        Margin = new Thickness(canvas.ActualWidth - 30,100 + j * 20,0,0)
                     };
                     
                     //Legend
                     var pic = new TextBlock
                     {
-                        Background = new SolidColorBrush(Provider.ColorOfDiagram[i]),
+                        Background = new SolidColorBrush(Provider.ColorOfDiagram[j]),
                         Height = 12,
                         Width = 12,
-                        Margin = new Thickness(canvas.ActualWidth - 50,100 + i * 20,0,0)
+                        Margin = new Thickness(canvas.ActualWidth - 50,100 + j * 20,0,0)
                     };
                     
                     y = dy;
